@@ -1,23 +1,23 @@
-# Usa la imagen oficial de Node.js LTS
-FROM node:18-alpine
+# 1. Imagen base con Node.js
+FROM node:20-alpine
 
-# Directorio de trabajo dentro del contenedor
+# 2. Crear directorio de la app
 WORKDIR /app
 
-# Copia package.json y package-lock.json
+# 3. Copiar package.json y package-lock.json
 COPY package*.json ./
 
-# Instala dependencias
+# 4. Instalar dependencias
 RUN npm install
 
-# Copia todo el proyecto
+# 5. Copiar todo el proyecto
 COPY . .
 
-# Expone el puerto que tu app usará (Render asigna un puerto mediante ENV)
+# 6. Compilar TypeScript a JavaScript
+RUN npx tsc
+
+# 7. Puerto que expondrá la app
 EXPOSE 3001
 
-# Compila TypeScript (si usas TS)
-RUN npm run build
-
-# Comando para iniciar la app
-CMD ["npm", "start"]
+# 8. Comando para iniciar la app
+CMD ["node", "dist/index.js"]
