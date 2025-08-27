@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "strict": true,
-        "types": ["express"],
-
-    "esModuleInterop": true
-  }
+    "target": "ES2020",                         // Versión de JavaScript generada
+    "module": "CommonJS",                       // Módulo de Node.js
+    "rootDir": "./src",                          // Carpeta raíz de TypeScript
+    "outDir": "./dist",                          // Carpeta donde se genera JS
+    "strict": true,                              // Activa comprobaciones estrictas
+    "types": ["node", "express"],               // Tipos para Node.js y Express
+    "esModuleInterop": true,                     // Compatibilidad con módulos CommonJS
+    "forceConsistentCasingInFileNames": true,   // Evita errores por mayúsculas/minúsculas
+    "skipLibCheck": true,                        // Evita revisar tipados de dependencias
+    "sourceMap": false                            // No generar mapas (útil para producción)
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
